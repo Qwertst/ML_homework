@@ -1,30 +1,35 @@
 import matplotlib.pyplot as plt
 import random
 import numpy as np
-
-
-k_x=[10,20,35,40,60,75,100]
-k_y=[5,20,30,55,70,85,100]
-
-
-
 from sklearn.neighbors import KDTree
-points = np.array([[random.randint(0,100), random.randint(0,100)],[random.randint(0,100), random.randint(0,100)],[random.randint(0,100), random.randint(0,100)],[random.randint(0,100), random.randint(0,100)],[random.randint(0,100), random.randint(0,100)]])
-people=np.array([[random.randint(0,100), random.randint(0,100)],[random.randint(0,100), random.randint(0,100)],[random.randint(0,100), random.randint(0,100)],[random.randint(0,100), random.randint(0,100)],[random.randint(0,100), random.randint(0,100)]])
 
+with open('input.txt', 'r') as file:
+    data = file.read().splitlines()
 
-tree = KDTree(points,metric='manhattan')
-dist, n=tree.query(people)
+k_x = list(map(int, data[0].split()))
+k_y = list(map(int, data[1].split()))
 
+schoolnumber = int(data[2])
+school = []
+for i in range(3, 3 + schoolnumber):
+    school.append(list(map(int, data[i].split())))
+school = np.array(school)
+pointnumber = int(data[3 + schoolnumber])
+points = []
+for i in range(4 + schoolnumber, 4 + schoolnumber + pointnumber):
+    points.append(list(map(int, data[i].split())))
+points = np.array(points)
 
-for i in range(len(people)):
-  print(people[i],points[n[i]])
+tree = KDTree(school, metric='manhattan')
+dist, n = tree.query(points)
 
-fig, ax = plt.subplots() 
-ax.scatter(points[:,0],points[:,1])
-ax.scatter(people[:,0],people[:,1])
-ax.set_xticks(k_x) 
+for i in range(schoolnumber):
+    print(points[i], school[n[i]])
+
+fig, ax = plt.subplots()
+ax.scatter(school[:, 0], school[:, 1])
+ax.scatter(points[:, 0], points[:, 1])
+ax.set_xticks(k_x)
 ax.set_yticks(k_y)
 plt.grid(True)
 plt.show()
-
