@@ -56,18 +56,19 @@ def poly(X, Y):
     plt.show()
 
 
-def func(x, a, k, b):
-    return a * np.exp(x * k) + b
-
+def func(x, a, b, c):
+    return a * np.exp(-x * b) + c
 
 def exp(X, Y):
-    x_plot = np.linspace(0, max(X))
-    popt, pcov = curve_fit(func, X, Y)
-    plt.plot(x_plot, func(x_plot, *popt), 'r-')
-    plt.title('Exponential regression', fontsize=20)
-    plt.xlabel(r'$R^2$ score: {0}'.format(r2_score(Y, func(X, *popt))))
+    popt, pcov = curve_fit(func, X, Y,p0=(1, 1e-6, 1),maxfev=2000)
+    x_plot = np.linspace(min(X), max(X))
     plt.scatter(X, Y)
+    y_plot = func(x_plot, *popt)
+    plt.plot(x_plot, y_plot, "r-")
+    plt.title("Exponential regression")
+    plt.xlabel(r'$R^2$ score: {0}'.format(r2_score(Y,func(X, *popt))))
     plt.show()
+
 
 
 if regtype == 1:
