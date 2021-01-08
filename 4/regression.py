@@ -15,9 +15,6 @@ regtype=int(input('...:'))
 X = data['0'].values
 Y = data['1'].values
 
-X = np.array([1, 2, 3, 4, 5, 8, 11, 15])
-Y = np.array([1, 5, 8, 16, 5, 1, 10, 20])
-
 
 def linear(X, Y):
     X_mat = np.vstack((np.ones(len(X)), X)).T
