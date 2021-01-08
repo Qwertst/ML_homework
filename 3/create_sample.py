@@ -3,7 +3,7 @@ import numpy as np
 
 
 np.random.seed(0)
-n_samples = 1500
+n_samples = 100000
 noisy_circles = datasets.make_circles(n_samples=n_samples, factor=.5,
                                       noise=.05)
 noisy_moons = datasets.make_moons(n_samples=n_samples, noise=.05)
@@ -19,7 +19,7 @@ varied = datasets.make_blobs(n_samples=n_samples,
                              random_state=random_state)
 dataset=datasets.make_blobs(n_samples=n_samples,centers=10,random_state=666,cluster_std=0.3)
 X, y = dataset
-f = open("data.txt", "w")
+f = open("dataset_7.txt", "w")
 for i in range(n_samples):
     s=str(X[i][0])+","+str(X[i][1])
     f.write("%s\n" % s)

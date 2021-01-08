@@ -1,6 +1,6 @@
 from random import randint
 
-n_1,n_2=randint(2000,3000),randint(2000,3000)
+n_1,n_2=randint(1000,1200),randint(1000,1200)
 d=["A","C","G","T"]
 s_1,s_2="",""
 for i in range(n_1):

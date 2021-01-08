@@ -6,14 +6,15 @@ from sklearn import cluster
 from sklearn.cluster import KMeans
 import pandas as pd
 
-data = pd.read_csv("data.txt")
+data = pd.read_csv("dataset_1.txt")
 X = data['0'].values
 Y = data['1'].values
 X = np.stack((X, Y), axis = 1)
-nclusters = 9
-
+nclusters = 2
+plt.scatter(X[:,0],X[:, 1])
+plt.show()
 X = StandardScaler().fit_transform(X)
-X_train, X_test, Y_train, Y_test = train_test_split(X[:, 0], X[:, 1], test_size=0.1, random_state=666)
+X_train, X_test, Y_train, Y_test = train_test_split(X[:, 0], X[:, 1], test_size=0.01, random_state=666)
 New_X = np.stack((X_test, Y_test), axis = 1)
 New_X = StandardScaler().fit_transform(New_X)
 
