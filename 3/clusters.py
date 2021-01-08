@@ -16,7 +16,6 @@ nclusters = 9
 X = StandardScaler().fit_transform(X)
 X_train, X_test, Y_train, Y_test = train_test_split(X[:, 0], X[:, 1], test_size=0.1, random_state=666)
 New_X = np.stack((X_test, Y_test), axis = 1)
-print(New_X)
 New_X = StandardScaler().fit_transform(New_X)
 
 hierarchy = cluster.AgglomerativeClustering(
