@@ -27,10 +27,10 @@ def distance(point1, point2):
 
     if (x1 // klen) == (x2 // klen) and (y1 // klen) != (y2 // klen):
         dy = abs(y1 - y2)
-        dx = min((x1 % klen + x1 % klen), (2 * klen - (x1 % klen + x2 % klen)))
-    elif (x1 // klen) != (x2 // klen) and (y1 // klen) != (y2 // klen):
+        dx = min((x1 % klen + x2 % klen), (2 * klen - (x1 % klen + x2 % klen)))
+    elif (x1 // klen) != (x2 // klen) and (y1 // klen) == (y2 // klen):
         dx = abs(x1 - x2)
-        dy = min((y1 % klen + y1 % klen), (2 * klen - (y1 % klen + y2 % klen)))
+        dy = min((y1 % klen + y2 % klen), (2 * klen - (y1 % klen + y2 % klen)))
     else:
         dx = abs(x1 - x2)
         dy = abs(y1 - y2)
