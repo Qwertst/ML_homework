@@ -45,7 +45,6 @@ def poly(X, Y):
         if score >= 0.99 or score < -500 or score < bestscore:
             break
         i+=1
-        #print(score,i)
     x = np.linspace(min(X), max(X), num=50)
     x_new = bestpoly.fit_transform(x)
     y_pred = bestmodel.predict(x_new)
