@@ -23,10 +23,9 @@ New_X = StandardScaler().fit_transform(New_X)
 connectivity = kneighbors_graph(
     New_X, n_neighbors=10, include_self=False)
 connectivity = 0.5 * (connectivity + connectivity.T)
-
 hierarchy = cluster.AgglomerativeClustering(
     linkage="average", affinity="cityblock",
-    n_clusters=nclusters,connectivity=connectivity)
+    n_clusters=nclusters, connectivity=connectivity)
 hierarchy.fit(New_X)
 y_pred = hierarchy.fit_predict(New_X)
 
