@@ -109,7 +109,6 @@ def kdtree_closest_point(root, point, depth=0):
 tree = build_kdtree(school)
 f = open("output.txt", "w")
 for p in points:
-    print(kdtree_closest_point(tree, p)[0])
     s="("+str(p[0])+","+str(p[1])+") "+"("+str(kdtree_closest_point(tree, p)[0])+","+str(kdtree_closest_point(tree, p)[1])+")"
     f.write("%s\n" %s)
 f.close()
